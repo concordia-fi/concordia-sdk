@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["es2015", "dom"],
+    "module": "commonjs",
+    "target": "esnext",
+    "esModuleInterop": true
+  },
+  "references": [
+    { "path": "../lib/concordia" },
+    { "path": "../lib/moneygun" },
+    { "path": "../lib/wallet" }
+  ],
+  "include": []
+}
