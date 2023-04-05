@@ -24,14 +24,15 @@ async function main() {
 
   const payload = concordiaClient.ping()
 
+  const maxGas = '4'
   const hash = await signAndSubmit({
-    config: config,
-    profile: profile,
-    payload: payload
+    config,
+    profile,
+    payload,
+    maxGas
     })
 
-  console.log('Concordia ping complete!')
-  console.log(hash)
+  console.log(`Concordia ping successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
 }
 
 main();
