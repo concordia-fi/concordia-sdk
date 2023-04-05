@@ -42,14 +42,19 @@ export function getWalletAccount(configFile: string, profile: string) {
   return new AptosAccount(new HexString(key).toUint8Array())
 }
 
+// Gas is expected to be a number contained in a string
+const DEFAULT_MAX_GAS = '200000'
+
 export async function signAndSubmit({
   config,
   profile,
-  payload
+  payload,
+  maxGas = DEFAULT_MAX_GAS
 }: {
   config: string
   profile: string
   payload: AptosFunctionPayload
+  maxGas?: string
 }) {
   const restURL = getRestURL(config, profile)
 
@@ -57,7 +62,13 @@ export async function signAndSubmit({
 
   const signer = getWalletAccount(config, profile)
 
-  const rawTx = await aptos.generateTransaction(signer.address(), payload)
+  const rawTx = await aptos.generateTransaction(
+      signer.address(),
+      payload,
+      {
+        max_gas_amount: maxGas
+      }
+  )
   const signedTx = await aptos.signTransaction(signer, rawTx)
   const pendingTx = await aptos.submitTransaction(signedTx)
   await aptos.waitForTransaction(pendingTx.hash, { checkSuccess: true })

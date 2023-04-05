@@ -26,10 +26,12 @@ async function main() {
   {
     const payload = concordiaClient.initProfileIX()
 
+    const maxGas = '2000'
     const hash = await signAndSubmit({
-      config: config,
-      profile: profile,
-      payload: payload
+      config,
+      profile,
+      payload,
+      maxGas
       })
 
     console.log(`Init profile successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
@@ -38,10 +40,12 @@ async function main() {
   {
     const container = await concordiaClient.fetcher.basketContainer()
     const payload = concordiaClient.initPortfolioIX(container.highestID)
+    const maxGas = '3000'
     const hash = await signAndSubmit({
-      config: config,
-      profile: profile,
-      payload: payload
+      config,
+      profile,
+      payload,
+      maxGas
       })
 
     console.log(`Init portfolio successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)

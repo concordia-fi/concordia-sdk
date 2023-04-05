@@ -25,13 +25,15 @@ async function main() {
 
   const moneygun = new Moneygun()
   {
+    const maxGas = '500'
     const hash = await signAndSubmit({
-      config: config,
-      profile: profile,
+      config,
+      profile,
       payload: {
-          type: 'entry_function_payload',
-          ...moneygun.getCoinPayload(COIN.USDC, 100_000)
-        }
+        type: 'entry_function_payload',
+        ...moneygun.getCoinPayload(COIN.USDC, 100_000)
+      },
+      maxGas
       })
     console.log(`USDC request successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
   }
@@ -41,10 +43,12 @@ async function main() {
     const profileInfo = await concordiaClient.fetcher.profile(`0x${walletAddress}`)
     const portAddress = profileInfo.portfolios[0]
     const payload = concordiaClient.addCollateralIX(portAddress, 100_000, moneygun.coinToType(COIN.USDC))
+    const maxGas = '2000'
     const hash = await signAndSubmit({
-      config: config,
-      profile: profile,
-      payload: payload
+      config,
+      profile,
+      payload,
+      maxGas
       })
     console.log(`Adding USDC as collateral successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
   }
@@ -52,10 +56,12 @@ async function main() {
   {
     const broker = `0x${CONCORDIA_ADDRESS}::lending_broker_types::A_USDC`
     const payload = concordiaClient.lendIX(broker, moneygun.coinToType(COIN.USDC), 100_000)
+    const maxGas = '500'
     const hash = await signAndSubmit({
-      config: config,
-      profile: profile,
-      payload: payload
+      config,
+      profile,
+      payload,
+      maxGas
       })
     console.log(`Lending USDC successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
   }
