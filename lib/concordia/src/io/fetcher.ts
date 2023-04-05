@@ -148,8 +148,8 @@ export class Fetcher {
     return {
       assetId: parseInt(p.asset_id),
       publishTime: parseInt(p.values.ts),
-      price: BigInt(parseInt(p.values.price.usd.v.value)),
-      confidence: BigInt(parseInt(p.values.price.confidence.v.value))
+      price: BigInt(p.values.price.usd.v.value),
+      confidence: BigInt(p.values.price.confidence.v.value)
     }
   }
 
