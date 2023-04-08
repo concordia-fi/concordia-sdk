@@ -2,7 +2,7 @@ export type AssetID = number
 
 export interface IAsset {
   assetId: AssetID
-  chainId: string
+  chainId: number
   decimals: number
   logo: string
   description: string

@@ -147,8 +147,8 @@ export class AptosFetcher {
     return a
   }
 
-  async assetIdByType(handle: string, type: any): Promise<string> {
-    const assetId: string = await this.tableItem(handle, type, 'u64', '0x1::type_info::TypeInfo')
+  async assetIdByType(handle: string, type: any): Promise<number> {
+    const assetId = await this.tableItem(handle, type, 'u64', '0x1::type_info::TypeInfo')
     return assetId
   }
 

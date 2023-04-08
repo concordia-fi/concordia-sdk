@@ -216,7 +216,7 @@ export class Fetcher {
     const type = this.buildAssetType(ti)
     return {
       assetId: parseInt(a.asset_id),
-      chainId: a.chain_id,
+      chainId: parseInt(a.chain_id),
       decimals: a.precision,
       type,
       logo: '',
