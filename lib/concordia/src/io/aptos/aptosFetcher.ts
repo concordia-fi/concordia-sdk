@@ -142,8 +142,8 @@ export class AptosFetcher {
     return 'asset_registry::AssetInfo'
   }
 
-  async assetById(handle: string, id: string): Promise<Asset> {
-    const a: Asset = await this.tableItem(handle, id, this.withRoot(this.assetType))
+  async assetById(handle: string, id: number): Promise<Asset> {
+    const a: Asset = await this.tableItem(handle, id.toString(), this.withRoot(this.assetType))
     return a
   }
 

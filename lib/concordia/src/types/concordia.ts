@@ -24,7 +24,7 @@ export interface IConcordia {
   initBasketIX(collateralIDs: string[]): AptosFunctionPayload
 
   insertCollateralIX(
-    assetID: string,
+    assetID: number,
     haircutBPS: number,
     maxGlobalDeposit: number,
     maxGlobalDepositUSD: number,
@@ -54,8 +54,8 @@ export interface IConcordia {
   initAssetRegistryIX(): AptosFunctionPayload
 
   registerAssetIX(
-    assetId: string,
-    chainId: string,
+    assetId: number,
+    chainId: number,
     precision: number,
     assetType: string
   ): AptosFunctionPayload

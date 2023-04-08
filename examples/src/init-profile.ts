@@ -6,7 +6,6 @@ import {
 } from "wallet";
 import { AptosClient } from 'aptos'
 import { Concordia } from 'concordia'
-import { COIN, Moneygun } from 'moneygun'
 
 const CLI_WALLET_PROFILE = 'concordia'
 const CONCORDIA_ADDRESS = 'c59f582e4c6ed7a66f366b61d53000ccf514dfb6271cddff02dc355e225fbb04'

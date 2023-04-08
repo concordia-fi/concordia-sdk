@@ -216,7 +216,7 @@ export class Concordia implements IConcordia {
   }
 
   insertCollateralIX(
-    assetId: string,
+    assetId: number,
     haircutBps: number,
     maxGlobalDeposit: number,
     maxGlobalDepositUSD: number,
@@ -228,18 +228,18 @@ export class Concordia implements IConcordia {
       function: this.aptosAdminEntryID('insert_collateral'),
       arguments: [
         assetId,
-        haircutBps.toString(),
-        maxGlobalDeposit.toString(),
-        maxGlobalDepositUSD.toString(),
-        maxPortfolioDeposit.toString(),
-        maxPortfolioDepositUSD.toString()
+        haircutBps,
+        maxGlobalDeposit,
+        maxGlobalDepositUSD,
+        maxPortfolioDeposit,
+        maxPortfolioDepositUSD
       ],
       type_arguments: []
     }
   }
 
   insertCollateralWithNewPriceIX(
-    assetId: string,
+    assetId: number,
     haircutBps: number,
     maxGlobalDeposit: number,
     maxGlobalDepositUSD: number,
@@ -252,11 +252,11 @@ export class Concordia implements IConcordia {
       function: this.aptosAdminEntryID('insert_collateral_with_new_price'),
       arguments: [
         assetId,
-        haircutBps.toString(),
-        maxGlobalDeposit.toString(),
-        maxGlobalDepositUSD.toString(),
-        maxPortfolioDeposit.toString(),
-        maxPortfolioDepositUSD.toString(),
+        haircutBps,
+        maxGlobalDeposit,
+        maxGlobalDepositUSD,
+        maxPortfolioDeposit,
+        maxPortfolioDepositUSD,
         oracle
       ],
       type_arguments: []
@@ -383,8 +383,8 @@ export class Concordia implements IConcordia {
   }
 
   registerAssetIX(
-    assetId: string,
-    chainId: string,
+    assetId: number,
+    chainId: number,
     precision: number,
     assetType: string
   ): AptosFunctionPayload {
