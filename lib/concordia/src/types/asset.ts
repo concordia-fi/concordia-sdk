@@ -1,4 +1,4 @@
-export type AssetID = string
+export type AssetID = number
 
 export interface IAsset {
   assetId: AssetID

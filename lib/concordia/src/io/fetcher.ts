@@ -68,7 +68,7 @@ export class Fetcher {
   async collateral(handle: string, id: string): Promise<ICollateral> {
     const c = await this.aptosFetcher.collateral(handle, id)
     return {
-      assetId: c.asset_id,
+      assetId: parseInt(c.asset_id),
       haircutBps: parseInt(c.haircut_bps),
       maxGlobalDepositUsd: parseInt(c.max_global_deposit_usd),
       maxGlobalDeposit: parseInt(c.max_global_deposit),
@@ -210,12 +210,12 @@ export class Fetcher {
     }
   }
 
-  async assetById(handle: string, id: string): Promise<IAsset> {
+  async assetById(handle: string, id: number): Promise<IAsset> {
     const a = await this.aptosFetcher.assetById(handle, id)
     const ti = a.type_info
     const type = this.buildAssetType(ti)
     return {
-      assetId: a.asset_id,
+      assetId: parseInt(a.asset_id),
       chainId: a.chain_id,
       decimals: a.precision,
       type,

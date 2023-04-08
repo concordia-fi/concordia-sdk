@@ -25,7 +25,7 @@ async function main() {
 
   const moneygun = new Moneygun()
   {
-    const maxGas = '500'
+    const maxGas = '1000'
     const hash = await signAndSubmit({
       config,
       profile,
@@ -56,7 +56,7 @@ async function main() {
   {
     const broker = `0x${CONCORDIA_ADDRESS}::lending_broker_types::A_USDC`
     const payload = concordiaClient.lendIX(broker, moneygun.coinToType(COIN.USDC), 100_000)
-    const maxGas = '500'
+    const maxGas = '1000'
     const hash = await signAndSubmit({
       config,
       profile,
