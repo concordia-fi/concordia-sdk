@@ -5,16 +5,18 @@ import {
   signAndSubmit,
 } from "wallet";
 import { AptosClient } from 'aptos'
-import { Concordia } from 'concordia'
+import {
+  CONCORDIA_TESTNET_ADDRESS,
+  Concordia
+} from 'concordia'
 import { COIN, Moneygun } from 'moneygun'
 
 const CLI_WALLET_PROFILE = 'concordia'
-const CONCORDIA_ADDRESS = 'c59f582e4c6ed7a66f366b61d53000ccf514dfb6271cddff02dc355e225fbb04'
 
 async function main() {
   const config = DEFAULT_CONFIG
   const profile = CLI_WALLET_PROFILE
-  const aptosAddress = CONCORDIA_ADDRESS
+  const aptosAddress = CONCORDIA_TESTNET_ADDRESS
   const nodeUrl = getRestURL(config, profile)
 
   const aptosClient = new AptosClient(nodeUrl)
@@ -54,9 +56,9 @@ async function main() {
   }
 
   {
-    const broker = `0x${CONCORDIA_ADDRESS}::lending_broker_types::A_USDC`
+    const broker = `0x${CONCORDIA_TESTNET_ADDRESS}::lending_broker_types::A_USDC`
     const payload = concordiaClient.lendIX(broker, moneygun.coinToType(COIN.USDC), 100_000)
-    const maxGas = '1000'
+    const maxGas = '2000'
     const hash = await signAndSubmit({
       config,
       profile,

@@ -6,6 +6,8 @@ import { mockCache } from '../asset/mock'
 import { Fetcher } from '../io'
 import { AptosFunctionPayload } from 'payload'
 
+export const CONCORDIA_TESTNET_ADDRESS = '294b385d5fb85c54a8543e84262f486de5664539af296316f482e697602320db'
+
 export class Concordia implements IConcordia {
   assetRegistry: AssetRegistry
   fetcher: Fetcher

@@ -5,7 +5,8 @@
   "scripts": {
     "ping": "tsc --build && ts-node src/ping.ts",
     "init-profile": "tsc --build && ts-node src/init-profile.ts",
-    "lend": "tsc --build && ts-node src/lend.ts"
+    "lend": "tsc --build && ts-node src/lend.ts",
+    "update-prices": "tsc --build && ts-node src/update-prices.ts"
   },
   "dependencies": {
     "@types/node": "18.6.2",

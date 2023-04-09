@@ -8,6 +8,7 @@
     "esModuleInterop": true
   },
   "references": [
+    { "path": "../lib/concordacle" },
     { "path": "../lib/concordia" },
     { "path": "../lib/moneygun" },
     { "path": "../lib/wallet" }
