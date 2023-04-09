@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "target": "esnext",
+    "rootDir": "src",
+    "outDir": "lib",
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "allowJs": true,
+    "preserveConstEnums": true,
+    "declarationMap": true,
+    "composite": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  },
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs"
+  },
+  "references": [{ "path": "../payload" }],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

@@ -5,15 +5,17 @@ import {
   signAndSubmit,
 } from "wallet";
 import { AptosClient } from 'aptos'
-import { Concordia } from 'concordia'
+import {
+  CONCORDIA_TESTNET_ADDRESS,
+  Concordia
+} from 'concordia'
 
 const CLI_WALLET_PROFILE = 'concordia'
-const CONCORDIA_ADDRESS = 'c59f582e4c6ed7a66f366b61d53000ccf514dfb6271cddff02dc355e225fbb04'
 
 async function main() {
   const config = DEFAULT_CONFIG
   const profile = CLI_WALLET_PROFILE
-  const aptosAddress = CONCORDIA_ADDRESS
+  const aptosAddress = CONCORDIA_TESTNET_ADDRESS
   const nodeUrl = getRestURL(config, profile)
 
   const aptosClient = new AptosClient(nodeUrl)
