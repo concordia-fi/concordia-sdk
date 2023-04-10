@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "Apache-2.0",
   "scripts": {
+    "borrow": "tsc --build && ts-node src/borrow.ts",
     "ping": "tsc --build && ts-node src/ping.ts",
     "init-profile": "tsc --build && ts-node src/init-profile.ts",
     "lend": "tsc --build && ts-node src/lend.ts",
