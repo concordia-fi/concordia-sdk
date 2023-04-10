@@ -37,7 +37,7 @@ jobs:
         with:
           timeout_seconds: 15
           max_attempts: 8
-          command: aptos account transfer --amount 1000000 --account concordia --private-key 0x${{ secrets.APTOS_FUNDING_KEY }} --url ${{ env.NODE_URL }} --assume-yes
+          command: aptos account transfer --amount 1500000 --account concordia --private-key 0x${{ secrets.APTOS_FUNDING_KEY }} --url ${{ env.NODE_URL }} --assume-yes
 
       - uses: actions/upload-artifact@v3
         with:
@@ -72,4 +72,7 @@ jobs:
         working-directory: examples
 
       - run: yarn update-prices
+        working-directory: examples
+
+      - run: yarn borrow
         working-directory: examples
