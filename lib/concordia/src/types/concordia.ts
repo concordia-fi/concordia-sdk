@@ -38,7 +38,9 @@ export interface IConcordia {
     tBroker: TBroker,
     basket: BasketID,
     assetType: string,
-    irParams: InterestRateParams
+    irParams: InterestRateParams,
+    depositNoteAssetId: number,
+    loanNoteAssetId: number,
   ): AptosFunctionPayload
 
   initProfileRegistryIX(): AptosFunctionPayload
