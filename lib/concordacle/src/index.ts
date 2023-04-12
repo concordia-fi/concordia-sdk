@@ -5,6 +5,18 @@ export { applyExponentiation, getMockPayload }
 export const CONCORDACLE_TESTNET_PUBKEY =
   '390e3c688489559688b823b80b7805f11ab9f8dc1f1156d99b48de7bc4ff4a4a'
 
+export type Signature = string
+export interface PricePayload {
+  conf: number
+  expo: number
+  price: number
+  publish_time: number
+}
+export interface PriceData {
+  signature: Signature
+  payload: PricePayload
+}
+
 export class Concordacle {
   public_key: string
 
@@ -25,10 +37,8 @@ export class Concordacle {
   //   return passthrough(asset)
   // }
 
-  async queryConcordacleLatestWithVerify(
-    asset: string
-  ): Promise<{ conf: number; expo: number; price: number; publish_time: number }> {
-    let response = await queryConcordacleLatest(asset)
+  async queryConcordacleLatestWithVerify(asset: string): Promise<PriceData> {
+    const response = await queryConcordacleLatest(asset)
 
     //convert payload to unique hex string
     let fingerPrint = payloadToHex(response.payload)
@@ -39,9 +49,9 @@ export class Concordacle {
       fingerPrint = '0'.concat(fingerPrint)
     }
 
-    let signature = response.signature
+    const signature = response.signature
 
-    let valid = await ed.verify(signature, fingerPrint, this.public_key)
+    const valid = await ed.verify(signature, fingerPrint, this.public_key)
 
     return new Promise((resolve, reject) => {
       if (valid) {
@@ -52,16 +62,13 @@ export class Concordacle {
     })
   }
 
-  async queryConcordacleLatest(asset: string): Promise<{
-    signature: string
-    payload: { conf: number; expo: number; price: number; publish_time: number }
-  }> {
+  async queryConcordacleLatest(asset: string): Promise<PriceData> {
     return queryConcordacleLatest(asset)
   }
 }
 
 //and removes the hyphens from the values
-function payloadToHex(payload: any): string {
+function payloadToHex(payload: PricePayload): string {
   const concat = payload.conf
     .toString(16)
     .concat(payload.expo.toString(16))
@@ -74,11 +81,8 @@ function applyExponentiation(price: number, expo: number): number {
   return price * Math.pow(10, expo)
 }
 
-async function getMockPayload(): Promise<{
-  signature: string
-  payload: { conf: number; expo: number; price: number; publish_time: number }
-}> {
-  let payload = {
+async function getMockPayload(): Promise<PriceData> {
+  const payload = {
     conf: 1,
     expo: 1,
     price: 1,
