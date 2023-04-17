@@ -291,6 +291,15 @@ export class Concordia implements IConcordia {
     }
   }
 
+  initBrokerRegistryIX(): AptosFunctionPayload {
+    return {
+      type: 'entry_function_payload',
+      function: this.aptosAdminEntryID('init_broker_registry'),
+      arguments: [],
+      type_arguments: []
+    }
+  }
+
   initProfileRegistryIX(): AptosFunctionPayload {
     return {
       type: 'entry_function_payload',
