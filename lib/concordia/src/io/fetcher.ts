@@ -147,7 +147,7 @@ export class Fetcher {
     const p = await this.aptosFetcher.price(handle, assetId)
     return {
       assetId: parseInt(p.asset_id),
-      publishTime: parseInt(p.values.ts),
+      publishTime: parseInt(p.values.publish_time_ms),
       price: BigInt(p.values.price.usd.v.value),
       confidence: BigInt(p.values.price.confidence.v.value)
     }
