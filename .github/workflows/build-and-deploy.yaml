@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Build, test and deploy
 
 env:
   APTOS_VERSION: "1.0.7"
@@ -19,10 +19,12 @@ on:
       - "**.md"
 
 jobs:
-  create-and-fund-accounts:
+  build-and-test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v3
+
       - name: Get Aptos
         uses: pontem-network/get-aptos@main
         with:
@@ -30,34 +32,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create concordia account
-        run: aptos init --profile concordia --network custom --rest-url ${{ env.NODE_URL }} --skip-faucet
+        run: cd ${{ env.HOME }} && aptos init --profile concordia --network custom --rest-url ${{ env.NODE_URL }} --skip-faucet
 
       - name: Fund concordia account
         uses: nick-fields/retry@v2
         with:
           timeout_seconds: 15
           max_attempts: 8
-          command: aptos account transfer --amount 2000000 --account concordia --private-key 0x${{ secrets.APTOS_FUNDING_KEY }} --url ${{ env.NODE_URL }} --assume-yes
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: aptos-config
-          path: .aptos/config.yaml
-          retention-days: 1
-
-  test-sdk:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    needs: [
-      create-and-fund-accounts
-    ]
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/download-artifact@v3
-        with:
-          name: aptos-config
-          path: ~/.aptos
+          command: cd ${{ env.HOME }} && aptos account transfer --amount 2000000 --account concordia --private-key 0x${{ secrets.APTOS_FUNDING_KEY }} --url ${{ env.NODE_URL }} --assume-yes
 
       - run: yarn
         working-directory: examples
