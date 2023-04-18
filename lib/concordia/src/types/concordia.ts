@@ -40,7 +40,7 @@ export interface IConcordia {
     assetType: string,
     irParams: InterestRateParams,
     depositNoteAssetId: number,
-    loanNoteAssetId: number,
+    loanNoteAssetId: number
   ): AptosFunctionPayload
 
   initProfileRegistryIX(): AptosFunctionPayload

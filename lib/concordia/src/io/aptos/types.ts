@@ -35,6 +35,7 @@ export type Broker = {
   ts_interest_accrued: string
   underlying_asset_type: TypeInfo
   vault: RA
+  broker_id: string
 }
 
 export type CollateralBasketContainer = {

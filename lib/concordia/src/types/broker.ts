@@ -8,6 +8,7 @@ export type Account = {
 }
 export interface IBrokerData {
   assetId: number
+  brokerId: number
   availableCoins: number
   basketId: string
   borrowedCoins: number

@@ -93,7 +93,8 @@ export class Fetcher {
       paramsVersion: b.params_version,
       tsInterestAccrued: b.ts_interest_accrued,
       assetType,
-      signerCapAccount: b.vault.ra.signer_cap.account
+      signerCapAccount: b.vault.ra.signer_cap.account,
+      brokerId: parseInt(b.broker_id)
     }
   }
 
