@@ -6,7 +6,8 @@ import { mockCache } from '../asset/mock'
 import { Fetcher } from '../io'
 import { AptosFunctionPayload } from 'payload'
 
-export const CONCORDIA_TESTNET_ADDRESS = '60d261da43a7045674a77a2c9a8a0167fe42cd6d79f62a2cf6254199d48719e2'
+export const CONCORDIA_TESTNET_ADDRESS =
+  '60d261da43a7045674a77a2c9a8a0167fe42cd6d79f62a2cf6254199d48719e2'
 
 export class Concordia implements IConcordia {
   assetRegistry: AssetRegistry
@@ -280,7 +281,7 @@ export class Concordia implements IConcordia {
     assetType: string,
     irParams: InterestRateParams,
     depositNoteAssetId: number,
-    loanNoteAssetId: number,
+    loanNoteAssetId: number
   ): AptosFunctionPayload {
     const { u1, u2, r0, r1, r2, r3 } = irParams
     return {
