@@ -62,13 +62,9 @@ export async function signAndSubmit({
 
   const signer = getWalletAccount(config, profile)
 
-  const rawTx = await aptos.generateTransaction(
-      signer.address(),
-      payload,
-      {
-        max_gas_amount: maxGas
-      }
-  )
+  const rawTx = await aptos.generateTransaction(signer.address(), payload, {
+    max_gas_amount: maxGas
+  })
   const signedTx = await aptos.signTransaction(signer, rawTx)
   const pendingTx = await aptos.submitTransaction(signedTx)
   await aptos.waitForTransaction(pendingTx.hash, { checkSuccess: true })

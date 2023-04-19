@@ -33,7 +33,9 @@ export class Concordacle {
   async latestPricesSigned(assets: string[]): Promise<Uint8Array> {
     const commaSeparated = assets.join(',')
     return new Uint8Array(
-      (await functions.latestPricesSigned(commaSeparated)).match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
+      (await functions.latestPricesSigned(commaSeparated))
+        .match(/.{1,2}/g)
+        .map((byte) => parseInt(byte, 16))
     )
   }
 
