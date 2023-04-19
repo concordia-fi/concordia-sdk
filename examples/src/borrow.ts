@@ -62,32 +62,6 @@ async function main() {
   const concordacle = new Concordacle(CONCORDACLE_TESTNET_PUBKEY);
 
   {
-    const signedPrice: Uint8Array = await concordacle.priceProxy("CONC_DEPO")
-    const payload = concordiaClient.updatePricesIX(signedPrice)
-    const maxGas = '600'
-    const hash = await signAndSubmit({
-      config,
-      profile,
-      payload,
-      maxGas
-      })
-    console.log(`USDC deposit note price update successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
-  }
-
-  {
-    const signedPrice: Uint8Array = await concordacle.priceProxy("CONC_LOAN")
-    const payload = concordiaClient.updatePricesIX(signedPrice)
-    const maxGas = '600'
-    const hash = await signAndSubmit({
-      config,
-      profile,
-      payload,
-      maxGas
-      })
-    console.log(`USDC loan note price update successful: https://explorer.aptoslabs.com/txn/${hash}?network=testnet`)
-  }
-
-  {
     const walletAddress = getWalletAddress(config, profile)
     const profileInfo = await concordiaClient.fetcher.profile(`0x${walletAddress}`)
     const portAddress = profileInfo.portfolios[0]
@@ -95,7 +69,15 @@ async function main() {
     const fec = await concordiaClient.fetcher.frontEndContainer(broker)
     const amount = 1000
     const USDCType = moneygun.coinToType(COIN.USDC)
-    const signedPrice: Uint8Array = await concordacle.priceProxy("PYTH_USDC")
+    const USDCAssetID = '101'
+    const USDCLoanNoteID = '3'
+    const USDCDepositNoteID = '4'
+    const assets = [
+      USDCAssetID,
+      USDCLoanNoteID,
+      USDCDepositNoteID
+    ]
+    const signedPrice: Uint8Array = await concordacle.latestPricesSigned(assets)
     const payload = concordiaClient.borrowIX(portAddress, fec.idIndex, amount, signedPrice, broker, USDCType)
     const maxGas = '8000'
     const hash = await signAndSubmit({

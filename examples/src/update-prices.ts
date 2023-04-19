@@ -29,7 +29,13 @@ async function main() {
   })
 
   const concordacle = new Concordacle(CONCORDACLE_TESTNET_PUBKEY);
-  const signedAptosPrice: Uint8Array = await concordacle.priceProxy("PYTH_APTOS")
+  const APTAssetID = '100'
+  const USDCAssetID = '101'
+  const assets = [
+    APTAssetID,
+    USDCAssetID
+  ]
+  const signedAptosPrice: Uint8Array = await concordacle.latestPricesSigned(assets)
   const payload = concordiaClient.updatePricesIX(signedAptosPrice)
   const maxGas = '600'
   const hash = await signAndSubmit({
