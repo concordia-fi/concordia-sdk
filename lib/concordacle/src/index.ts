@@ -1,4 +1,4 @@
-import { passthrough, queryConcordacleLatest } from './functions'
+import * as functions from './functions'
 import * as ed from '@noble/ed25519'
 export { applyExponentiation, getMockPayload }
 
@@ -26,19 +26,19 @@ export class Concordacle {
 
   async priceProxy(asset: string): Promise<Uint8Array> {
     return new Uint8Array(
-      (await passthrough(asset)).match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
+      (await functions.passthrough(asset)).match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
     )
   }
 
-  // async priceProxyV0(asset: string): Promise<{
-  //   signature: string
-  //   payload: { conf: number; expo: number; price: number; publish_time: number }
-  // }> {
-  //   return passthrough(asset)
-  // }
+  async latestPricesSigned(assets: string[]): Promise<Uint8Array> {
+    const commaSeparated = assets.join(',')
+    return new Uint8Array(
+      (await functions.latestPricesSigned(commaSeparated)).match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
+    )
+  }
 
   async queryConcordacleLatestWithVerify(asset: string): Promise<PriceData> {
-    const response = await queryConcordacleLatest(asset)
+    const response = await functions.queryConcordacleLatest(asset)
 
     //convert payload to unique hex string
     let fingerPrint = payloadToHex(response.payload)
@@ -63,7 +63,7 @@ export class Concordacle {
   }
 
   async queryConcordacleLatest(asset: string): Promise<PriceData> {
-    return queryConcordacleLatest(asset)
+    return functions.queryConcordacleLatest(asset)
   }
 }
 
