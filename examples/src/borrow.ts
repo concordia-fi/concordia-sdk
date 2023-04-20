@@ -70,8 +70,8 @@ async function main() {
     const amount = 1000
     const USDCType = moneygun.coinToType(COIN.USDC)
     const USDCAssetID = '101'
-    const USDCLoanNoteID = '3'
-    const USDCDepositNoteID = '4'
+    const USDCDepositNoteID = '103'
+    const USDCLoanNoteID = '104'
     const assets = [
       USDCAssetID,
       USDCLoanNoteID,

@@ -7,7 +7,7 @@ import { Fetcher } from '../io'
 import { AptosFunctionPayload } from 'payload'
 
 export const CONCORDIA_TESTNET_ADDRESS =
-  '60d261da43a7045674a77a2c9a8a0167fe42cd6d79f62a2cf6254199d48719e2'
+  '0e624ad8233e030968931abeb63ca02d9eee4dd15f97660ab4bc7dd4b2eb335e'
 
 export class Concordia implements IConcordia {
   assetRegistry: AssetRegistry
