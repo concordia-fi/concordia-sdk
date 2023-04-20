@@ -287,7 +287,7 @@ export class Concordia implements IConcordia {
     return {
       type: 'entry_function_payload',
       function: this.aptosAdminEntryID('init_broker'),
-      arguments: [basket, u1, u2, r0, r1, r2, r3, depositNoteAssetId, loanNoteAssetId],
+      arguments: [basket, depositNoteAssetId, loanNoteAssetId, u1, u2, r0, r1, r2, r3],
       type_arguments: [tBroker, assetType]
     }
   }
