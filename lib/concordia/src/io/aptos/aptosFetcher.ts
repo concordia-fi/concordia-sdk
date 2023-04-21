@@ -149,7 +149,7 @@ export class AptosFetcher {
 
   async assetIdByType(handle: string, type: any): Promise<number> {
     const assetId = await this.tableItem(handle, type, 'u64', '0x1::type_info::TypeInfo')
-    return assetId
+    return parseInt(assetId)
   }
 
   get priceType() {
