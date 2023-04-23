@@ -160,29 +160,17 @@ export class Fetcher {
       address: portAddress,
       basketId: p.basket_id,
       liabByFrontEnd: {
-        handle: p.liab_by_frontend.indexes.handle,
-        items: p.liab_by_frontend.items.map((i) => parseInt(i)),
-        keys: {
-          itemTableHandle: p.liab_by_frontend.keys.item_table.handle,
-          items: p.liab_by_frontend.keys.items
-        }
+        keys: p.liab_by_frontend.keys.items.map((i) => parseInt(i)),
+        values: p.liab_by_frontend.items.map((i) => parseInt(i))
       },
       positions: {
         collaterals: {
-          handle: p.positions.collaterals.indexes.handle,
-          items: p.positions.collaterals.items.map((i) => parseInt(i)),
-          keys: {
-            itemTableHandle: p.positions.collaterals.keys.item_table.handle,
-            items: p.positions.collaterals.keys.items
-          }
+          keys: p.positions.collaterals.keys.items.map((i) => parseInt(i)),
+          values: p.positions.collaterals.items.map((i) => parseInt(i))
         },
         liabilities: {
-          handle: p.positions.liabilities.indexes.handle,
-          items: p.positions.liabilities.items.map((i) => parseInt(i)),
-          keys: {
-            itemTableHandle: p.positions.collaterals.keys.item_table.handle,
-            items: p.positions.collaterals.keys.items
-          }
+          keys: p.positions.liabilities.keys.items.map((i) => parseInt(i)),
+          values: p.positions.liabilities.items.map((i) => parseInt(i))
         },
         vault: p.positions.vault.ra.signer_cap.account
       },

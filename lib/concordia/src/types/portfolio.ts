@@ -3,23 +3,21 @@ import { AssetID } from './asset'
 export type PortfolioID = string
 
 export type PositionData = {
-  handle: string
-  items: number[]
-  keys: {
-    itemTableHandle: string
-    items: string[]
-  }
+  keys: number[]
+  values: number[]
+}
+
+export interface IPositions {
+  collaterals: PositionData
+  liabilities: PositionData
+  vault: string
 }
 
 export interface IPortfolioData {
   address: string
   basketId: string
   liabByFrontEnd: PositionData
-  positions: {
-    collaterals: PositionData
-    liabilities: PositionData
-    vault: string
-  }
+  positions: IPositions
   ra: string
 }
 
