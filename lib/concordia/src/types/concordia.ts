@@ -67,7 +67,7 @@ export interface IConcordia {
   removeCollateralIX(
     portfolioAddress: string,
     amount: number,
-    oracle: number[],
+    oracle: Uint8Array,
     coin: string
   ): AptosFunctionPayload
 
