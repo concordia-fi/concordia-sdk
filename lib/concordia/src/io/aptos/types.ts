@@ -26,10 +26,17 @@ export type ProfileRegistry = {
   sequence_lookup: Table
 }
 
+export interface NumberWithScale {
+  v: {
+    scale: number
+    value: string
+  }
+}
+
 export type Broker = {
   available_coins: string
   basket_id: string
-  borrowed_coins: string
+  borrowed_coins: NumberWithScale
   interest_rate_version: number
   params_version: number
   ts_interest_accrued: string

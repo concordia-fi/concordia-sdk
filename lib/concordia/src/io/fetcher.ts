@@ -17,7 +17,7 @@ import {
 } from '../types'
 import { IFrontEnd, IFrontEndContainer } from '../types/frontend'
 import { AptosFetcher } from './aptos/aptosFetcher'
-import { TypeInfo } from './aptos/types'
+import { TypeInfo, NumberWithScale } from './aptos/types'
 
 /**
  * The Fetcher is responsible for performing read-only IO with blockchains
@@ -84,11 +84,12 @@ export class Fetcher {
     const assetType = this.buildAssetType(ti)
     const ar = await this.assetRegistry()
     const assetId = await this.aptosFetcher.assetIdByType(ar.typeToIdHandle, ti)
+    console.log('b', b)
     return {
       assetId,
       availableCoins: parseInt(b.available_coins),
       basketId: b.basket_id,
-      borrowedCoins: parseInt(b.borrowed_coins),
+      borrowedCoins: this.deserializeNumberWithScale(b.borrowed_coins),
       interestRateVersion: b.interest_rate_version,
       paramsVersion: b.params_version,
       tsInterestAccrued: b.ts_interest_accrued,
@@ -233,5 +234,10 @@ export class Fetcher {
       },
       vault: fe.vault.ra.signer_cap.account
     }
+  }
+
+  deserializeNumberWithScale(rawNumber: NumberWithScale): number {
+    const value = parseInt(rawNumber.v.value)
+    return value / 10 ** rawNumber.v.scale
   }
 }
