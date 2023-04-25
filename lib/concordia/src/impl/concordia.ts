@@ -103,11 +103,11 @@ export class Concordia implements IConcordia {
     }
   }
 
-  initPriceStoreIX(): AptosFunctionPayload {
+  initPriceStoreIX(expirationMS: number): AptosFunctionPayload {
     return {
       type: 'entry_function_payload',
       function: this.aptosAdminEntryID('init_price_store'),
-      arguments: [],
+      arguments: [expirationMS],
       type_arguments: []
     }
   }

@@ -77,7 +77,7 @@ export interface IConcordia {
 
   initPriceUpdaterIX(priceSignerKey: Uint8Array): AptosFunctionPayload
 
-  initPriceStoreIX(): AptosFunctionPayload
+  initPriceStoreIX(expirationMS: number): AptosFunctionPayload
 
   bcsSerializeUint256(value: bigint | number): Uint8Array
 
