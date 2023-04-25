@@ -109,7 +109,7 @@ export type PriceData = {
 }
 
 export type PriceValues = {
-  publish_time_seconds: string
+  publish_time_ms: string
   price: PriceValue
 }
 
