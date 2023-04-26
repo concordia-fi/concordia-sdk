@@ -1,5 +1,5 @@
 {
-  "name": "wallet",
+  "name": "@concordia-fi/wallet",
   "version": "1.0.1",
   "license": "Apache-2.0",
   "main": "lib/index.js",

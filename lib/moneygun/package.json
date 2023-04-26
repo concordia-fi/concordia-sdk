@@ -1,5 +1,5 @@
 {
-  "name": "moneygun",
+  "name": "@concordia-fi/moneygun",
   "version": "1.0.3",
   "license": "Apache-2.0",
   "main": "lib/index.js",

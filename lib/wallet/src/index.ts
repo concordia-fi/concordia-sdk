@@ -1,5 +1,11 @@
-import { AptosFunctionPayload } from 'payload'
 import { AptosClient, AptosAccount, HexString } from 'aptos'
+
+export interface EntryFunctionPayload {
+  type: 'entry_function_payload'
+  function: string
+  arguments: any[] // matching Aptos's EntryFunctionPayload
+  type_arguments: string[]
+}
 
 const path = require('path')
 export const DEFAULT_CONFIG = path.join(process.env.HOME, '.aptos', 'config.yaml')
@@ -53,7 +59,7 @@ export async function signAndSubmit({
 }: {
   config: string
   profile: string
-  payload: AptosFunctionPayload
+  payload: EntryFunctionPayload
   maxGas?: string
 }) {
   const restURL = getRestURL(config, profile)
