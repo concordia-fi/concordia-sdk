@@ -42,7 +42,7 @@ export function getWalletAddress(configFile: string, profile: string) {
   return config.profiles[profile].account
 }
 
-function getWalletPrivateKey(configFile: string, profile: string) {
+export function getWalletPrivateKey(configFile: string, profile: string) {
   const config = getConfig(configFile)
   return config.profiles[profile].private_key
 }
