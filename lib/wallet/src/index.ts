@@ -1,16 +1,32 @@
-import { AptosFunctionPayload } from 'payload'
 import { AptosClient, AptosAccount, HexString } from 'aptos'
+import path from 'path'
+import yaml from 'js-yaml'
+import fs from 'fs'
 
-const path = require('path')
 export const DEFAULT_CONFIG = path.join(process.env.HOME, '.aptos', 'config.yaml')
-
 export const DEFAULT_PROFILE = 'default'
 
-const yaml = require('js-yaml')
-const fs = require('fs')
+const DEFAULT_MAX_GAS = '200000'
+
+export interface AptosFunctionPayload {
+  type: 'entry_function_payload'
+  function: string
+  arguments: any[] // matching Aptos's EntryFunctionPayload
+  type_arguments: string[]
+}
+
+export interface AptosConfig {
+  profiles: {
+    [profile: string]: {
+      private_key: string
+      account: string
+      rest_url: string
+    }
+  }
+}
 
 function getConfig(file: string) {
-  return yaml.load(fs.readFileSync(file, 'utf8'))
+  return yaml.load(fs.readFileSync(file, 'utf8')) as AptosConfig
 }
 
 export function walletExists(configFile: string, profile: string) {
@@ -26,7 +42,7 @@ export function getWalletAddress(configFile: string, profile: string) {
   return config.profiles[profile].account
 }
 
-function getWalletPrivateKey(configFile: string, profile: string) {
+export function getWalletPrivateKey(configFile: string, profile: string) {
   const config = getConfig(configFile)
   return config.profiles[profile].private_key
 }
@@ -41,9 +57,6 @@ export function getWalletAccount(configFile: string, profile: string) {
 
   return new AptosAccount(new HexString(key).toUint8Array())
 }
-
-// Gas is expected to be a number contained in a string
-const DEFAULT_MAX_GAS = '200000'
 
 export async function signAndSubmit({
   config,
