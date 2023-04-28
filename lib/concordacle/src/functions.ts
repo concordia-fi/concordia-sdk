@@ -6,21 +6,37 @@ const passThroughURL =
   'https://us-central1-superposition-concordacle.cloudfunctions.net/priceProxy?asset='
 const latestPricesSignedURL =
   'https://us-central1-superposition-concordacle.cloudfunctions.net/latestPricesSigned?assets='
+const queryAllURL =
+  'https://us-central1-superposition-concordacle.cloudfunctions.net/assetManifest?ids=all'
 
 export async function passthrough(asset: string): Promise<string> {
-  let response = await fetch(passThroughURL + asset)
+  const response = await fetch(passThroughURL + asset)
 
   return response.text()
 }
 
 export async function latestPricesSigned(assets: string): Promise<string> {
-  let response = await fetch(latestPricesSignedURL + assets)
+  const response = await fetch(latestPricesSignedURL + assets)
+  if (!response.ok) {
+    throw Error(response.statusText)
+  }
 
   return response.text()
 }
 
 export async function queryConcordacleLatest(asset: string): Promise<any> {
-  let response = await fetch(concordacleLatestURL + asset)
+  const response = await fetch(concordacleLatestURL + asset)
+  if (!response.ok) {
+    throw Error(response.statusText)
+  }
 
+  return response.json()
+}
+
+export async function queryAll(): Promise<string> {
+  const response = await fetch(queryAllURL)
+  if (!response.ok) {
+    throw Error(response.statusText)
+  }
   return response.json()
 }
