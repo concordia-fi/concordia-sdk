@@ -39,6 +39,12 @@ export class Concordacle {
     )
   }
 
+  async queryAll(): Promise<any> {
+    const all = await functions.queryAll()
+    console.log('all', all)
+    return all
+  }
+
   async queryConcordacleLatestWithVerify(asset: string): Promise<PriceData> {
     const response = await functions.queryConcordacleLatest(asset)
 
