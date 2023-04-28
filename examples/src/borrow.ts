@@ -70,12 +70,12 @@ async function main() {
     const amount = 1000
     const USDCType = moneygun.coinToType(COIN.USDC)
     const USDCAssetID = '101'
-    const USDCLoanNoteID = '3'
-    const USDCDepositNoteID = '4'
+    const USDCDepositNoteID = '10111'
+    const USDCLoanNoteID = '10112'
     const assets = [
       USDCAssetID,
-      USDCLoanNoteID,
-      USDCDepositNoteID
+      USDCDepositNoteID,
+      USDCLoanNoteID
     ]
     const signedPrice: Uint8Array = await concordacle.latestPricesSigned(assets)
     const payload = concordiaClient.borrowIX(portAddress, fec.idIndex, amount, signedPrice, broker, USDCType)
