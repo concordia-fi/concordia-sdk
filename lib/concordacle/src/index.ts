@@ -24,12 +24,6 @@ export class Concordacle {
     this.public_key = pubkey
   }
 
-  async priceProxy(asset: string): Promise<Uint8Array> {
-    return new Uint8Array(
-      (await functions.passthrough(asset)).match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
-    )
-  }
-
   async latestPricesSigned(assets: string[]): Promise<Uint8Array> {
     const commaSeparated = assets.join(',')
     return new Uint8Array(
