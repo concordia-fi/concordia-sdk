@@ -7,7 +7,7 @@ const passThroughURL =
 const latestPricesSignedURL =
   'https://us-central1-superposition-concordacle.cloudfunctions.net/latestPricesSigned?assets='
 const queryAllURL =
-  'https://us-central1-superposition-concordacle.cloudfunctions.net/assetManifest?ids=all'
+  'https://us-central1-asset-registry-c9e44.cloudfunctions.net/assetManifest?ids=all'
 
 export async function passthrough(asset: string): Promise<string> {
   const response = await fetch(passThroughURL + asset)
