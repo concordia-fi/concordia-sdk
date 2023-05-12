@@ -73,14 +73,6 @@ jobs:
           git diff --exit-code
         working-directory: lib/concordacle
 
-      - name: Build concordia lib
-        run: |
-          yarn
-          yarn format
-          yarn build
-          git diff --exit-code
-        working-directory: lib/concordia
-
       - run: yarn
         working-directory: examples
 

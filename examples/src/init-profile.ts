@@ -8,7 +8,7 @@ import { AptosClient } from 'aptos'
 import {
   CONCORDIA_TESTNET_ADDRESS,
   Concordia
-} from 'concordia'
+} from "@concordia/concordia"
 
 const CLI_WALLET_PROFILE = 'concordia'
 
