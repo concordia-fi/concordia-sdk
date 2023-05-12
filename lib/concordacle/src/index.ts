@@ -30,6 +30,11 @@ export class Concordacle {
     )
   }
 
+  async latestPricesJSON(assets: string[]): Promise<string> {
+    const commaSeparated = assets.join(',')
+    return await functions.latestPricesJSON(commaSeparated)
+  }
+
   async latestPricesSigned(assets: string[]): Promise<Uint8Array> {
     const commaSeparated = assets.join(',')
     return new Uint8Array(
@@ -41,7 +46,6 @@ export class Concordacle {
 
   async queryAll(): Promise<any> {
     const all = await functions.queryAll()
-    console.log('all', all)
     return all
   }
 

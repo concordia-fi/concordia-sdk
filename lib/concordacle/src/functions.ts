@@ -8,9 +8,20 @@ const latestPricesSignedURL =
   'https://us-central1-superposition-concordacle.cloudfunctions.net/latestPricesSigned?assets='
 const queryAllURL =
   'https://us-central1-asset-registry-c9e44.cloudfunctions.net/assetManifest?ids=all'
+const latestPricesJSONURL =
+  'https://us-central1-superposition-concordacle.cloudfunctions.net/latestPricesJSON?assets='
 
 export async function passthrough(asset: string): Promise<string> {
   const response = await fetch(passThroughURL + asset)
+
+  return response.text()
+}
+
+export async function latestPricesJSON(assets: string): Promise<string> {
+  const response = await fetch(latestPricesJSONURL + assets)
+  if (!response.ok) {
+    throw Error(response.statusText)
+  }
 
   return response.text()
 }
