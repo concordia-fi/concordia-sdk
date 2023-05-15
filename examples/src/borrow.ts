@@ -66,7 +66,7 @@ async function main() {
     const profileInfo = await concordiaClient.fetcher.profile(`0x${walletAddress}`)
     const portAddress = profileInfo.portfolios[0]
     const broker = `0x${CONCORDIA_TESTNET_ADDRESS}::lending_broker_types::A_USDC`
-    const fec = await concordiaClient.fetcher.frontEndContainer(broker)
+    const fec = await concordiaClient.fetcher.frontEndContainer()
     const amount = 1000
     const USDCType = moneygun.coinToType(COIN.USDC)
     const USDCAssetID = '101'
