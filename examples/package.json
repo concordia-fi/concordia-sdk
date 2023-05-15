@@ -10,6 +10,7 @@
     "update-prices": "tsc --build && ts-node src/update-prices.ts"
   },
   "dependencies": {
+    "@concordia/concordacle": "1.0.0",
     "@concordia/concordia": "^1.0.3",
     "@types/node": "18.6.2",
     "aptos": "^1.3.17",
