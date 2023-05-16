@@ -41,14 +41,6 @@ jobs:
           max_attempts: 8
           command: cd ${{ env.HOME }} && aptos account transfer --amount 2000000 --account concordia --private-key 0x${{ secrets.APTOS_FUNDING_KEY }} --url ${{ env.NODE_URL }} --assume-yes
 
-      - name: Build payload lib
-        run: |
-          yarn
-          yarn format
-          yarn build
-          git diff --exit-code
-        working-directory: lib/payload
-
       - name: Build wallet lib
         run: |
           yarn
