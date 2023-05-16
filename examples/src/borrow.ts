@@ -13,7 +13,7 @@ import {
   CONCORDACLE_TESTNET_PUBKEY,
   Concordacle
 } from "@concordia/concordacle";
-import { COIN, Moneygun } from 'moneygun'
+import { COIN, Moneygun } from '@concordia/moneygun'
 
 const CLI_WALLET_PROFILE = 'concordia'
 
