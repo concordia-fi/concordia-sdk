@@ -3,7 +3,7 @@ import {
   getWalletAddress,
   getRestURL,
   signAndSubmit,
-} from "wallet";
+} from "@concordia/wallet"
 import { AptosClient } from 'aptos'
 import {
   CONCORDIA_TESTNET_ADDRESS,
