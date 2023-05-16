@@ -1,6 +1,6 @@
 {
-  "name": "moneygun",
-  "version": "1.0.3",
+  "name": "@concordia/moneygun",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,6 +10,7 @@
     "lint": "eslint --ext .ts, ."
   },
   "files": [
+    "src/**/*",
     "lib/**/*"
   ],
   "dependencies": {

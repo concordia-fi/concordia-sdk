@@ -9,7 +9,7 @@ import {
   CONCORDIA_TESTNET_ADDRESS,
   Concordia
 } from "@concordia/concordia"
-import { COIN, Moneygun } from 'moneygun'
+import { COIN, Moneygun } from '@concordia/moneygun'
 
 const CLI_WALLET_PROFILE = 'concordia'
 
