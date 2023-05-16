@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@concordia/concordia@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@concordia/concordia/-/concordia-1.0.3.tgz#4502d71cdd0c6ad7521b89eaa7292c444ce9dc7f"
-  integrity sha512-iOeYw6tOFeqTf1btecxMc0GS0vo5dHh2jwW89xdh0Cr+xwo86FP8ivuz52gHNBrlq1cuViTpV/5Xi8Bg6XHl2w==
+"@concordia/concordia@1.0.x":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@concordia/concordia/-/concordia-1.0.4.tgz#d720f3e8ea0e9420389d52041ba8128b3e32faeb"
+  integrity sha512-M6cZkQdUj4H0pVAEZUsj3yAyMmtTEuz/Phfbkr8Re2fWDTr/mnsHox57X3Ucsl88AUI5V/aF6FacUjQrhiLZtg==
   dependencies:
     aptos "^1.3.17"
     bignumber.js "^9.1.1"
