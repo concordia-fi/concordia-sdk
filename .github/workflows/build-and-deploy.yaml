@@ -57,14 +57,6 @@ jobs:
           git diff --exit-code
         working-directory: lib/moneygun
 
-      - name: Build concordacle lib
-        run: |
-          yarn
-          yarn format
-          yarn build
-          git diff --exit-code
-        working-directory: lib/concordacle
-
       - run: yarn
         working-directory: examples
 
