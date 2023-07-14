@@ -68,9 +68,3 @@ jobs:
 
       - run: yarn lend
         working-directory: examples
-
-      - run: yarn update-prices
-        working-directory: examples
-
-      - run: yarn borrow
-        working-directory: examples
